@@ -1,6 +1,8 @@
 # GLSL shader sandbox for Oculus rift
 coded by kioku
 
+![scr](scr.png)
+
 ##  based on GLSL sandbox
   https://github.com/mrdoob/glsl-sandbox
 
@@ -9,8 +11,9 @@ coded by kioku
 
 1. start up oculus bridge
 (including App)
-mac: oculus-bridge-osx
-win: oculus-bridge-win
+
+    * mac: oculus-bridge-osx.zip
+    * win: oculus-bridge-win.zip
 
     SEE ALSO: https://github.com/Instrument/oculus-bridge
 
