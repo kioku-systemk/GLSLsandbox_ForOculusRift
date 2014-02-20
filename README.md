@@ -22,5 +22,5 @@ coded by kioku
 (tested on Chrome)
 
 
-
-
+## LICENSE
+MIT License.
