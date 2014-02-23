@@ -55,7 +55,7 @@
 				top:0px;
 				width:50%;
 				height:100%;
-				z-index:20;
+				/*z-index:20;*/
 				overflow:scroll;
 			}
 			#rightview {
@@ -64,7 +64,7 @@
 				top:0px;
 				width:50%;
 				height:100%;
-				z-index:20;
+				/*z-index:20;*/
 				overflow:scroll;
 			}
 		</style>
@@ -86,8 +86,8 @@
 		<script>
 		var lv = document.getElementById('leftview');
 		var rv = document.getElementById('rightview');
-		rv.onscroll = function (){ lv.scrollTop = this.scrollTop; }
-		lv.onscroll = function (){ rv.scrollTop = this.scrollTop; };
+		rv.onscroll = function (){ lv.scrollTop = this.scrollTop; lv.scrollLeft = this.scrollLeft;}
+		lv.onscroll = function (){ rv.scrollTop = this.scrollTop; rv.scrollLeft = this.scrollLeft;};
 
 		</script>
 		<script id="example" type="x-shader/x-fragment">#ifdef GL_ES
@@ -298,6 +298,7 @@ void main()
 
 						button.textContent = 'show code';
 						code.getWrapperElement().style.display = 'none';
+						cod2.getWrapperElement().style.display = 'none';
 						compileButton.style.visibility = 'hidden';
 						set_save_button('hidden');
 						set_parent_button('hidden');
@@ -307,6 +308,7 @@ void main()
 
 						button.textContent = 'hide code';
 						code.getWrapperElement().style.display = '';
+						cod2.getWrapperElement().style.display = '';
 						compileButton.style.visibility = 'visible';
 						set_save_button('visible');
 						set_parent_button('visible');
@@ -380,6 +382,7 @@ void main()
 					indentWithTabs: true,
 					tabSize: 4,
 					indentUnit: 4,
+					readOnly:true,
 					mode: "text/x-glsl",
 					onChange: function () {
 					}
@@ -398,12 +401,6 @@ void main()
 							clearTimeout(compileTimer);
 							compileTimer = setTimeout(compile, 500);
 						}
-					},
-					onScroll: function (cm){
-					//console.log('onscroll',code.getWrapperElement());
-					//cm.setScrollTop(0);
-						//var sy = cm.getScrollInfo();
-						//cod2.setScrollTop(sy);
 					}
 				});
 				code.setValue(document.getElementById('defshader').innerHTML);
