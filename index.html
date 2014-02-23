@@ -56,7 +56,7 @@
 				width:50%;
 				height:100%;
 				z-index:20;
-				overflow:hidden;
+				overflow:scroll;
 			}
 			#rightview {
 				position:absolute;
@@ -65,7 +65,7 @@
 				width:50%;
 				height:100%;
 				z-index:20;
-				overflow:hidden;
+				overflow:scroll;
 			}
 		</style>
 	</head>
@@ -83,6 +83,13 @@
 
 		<script src="js/OculusBridge.min.js"></script>
 
+		<script>
+		var lv = document.getElementById('leftview');
+		var rv = document.getElementById('rightview');
+		rv.onscroll = function (){ lv.scrollTop = this.scrollTop; }
+		lv.onscroll = function (){ rv.scrollTop = this.scrollTop; };
+
+		</script>
 		<script id="example" type="x-shader/x-fragment">#ifdef GL_ES
 precision mediump float;
 #endif
@@ -371,8 +378,8 @@ void main()
 					lineNumbers: true,
 					matchBrackets: true,
 					indentWithTabs: true,
-					tabSize: 8,
-					indentUnit: 8,
+					tabSize: 4,
+					indentUnit: 4,
 					mode: "text/x-glsl",
 					onChange: function () {
 					}
@@ -382,8 +389,8 @@ void main()
 					lineNumbers: true,
 					matchBrackets: true,
 					indentWithTabs: true,
-					tabSize: 8,
-					indentUnit: 8,
+					tabSize: 4,
+					indentUnit: 4,
 					mode: "text/x-glsl",
 					onChange: function () {
 						cod2.setValue(code.getValue());
@@ -391,13 +398,20 @@ void main()
 							clearTimeout(compileTimer);
 							compileTimer = setTimeout(compile, 500);
 						}
+					},
+					onScroll: function (cm){
+					//console.log('onscroll',code.getWrapperElement());
+					//cm.setScrollTop(0);
+						//var sy = cm.getScrollInfo();
+						//cod2.setScrollTop(sy);
 					}
 				});
 				code.setValue(document.getElementById('defshader').innerHTML);
 				cod2.setValue(document.getElementById('defshader').innerHTML);
-				code.getWrapperElement().style.display = '';
+				//code.getWrapperElement().style.display = '';
 				
-				resizer.offsetMouseX = 0;
+				
+				/*resizer.offsetMouseX = 0;
 				resizer.offsetMouseY = 0;
 				resizer.isResizing = false;
 				resizer.currentWidth = 100;
@@ -417,7 +431,7 @@ void main()
 						resizer.isResizing = true;
 						event.preventDefault();
 					}
-				}, false );
+				}, false );*/
 				
 				if (gl) {
 
@@ -969,8 +983,8 @@ void main()
 
 				code.getWrapperElement().style.top = '75px';
 				code.getWrapperElement().style.left = '25px';
-				code.getWrapperElement().style.width = resizer.currentWidth + 'px';
-				code.getWrapperElement().style.height = resizer.currentHeight + 'px';
+//				code.getWrapperElement().style.width = resizer.currentWidth + 'px';
+//				code.getWrapperElement().style.height = resizer.currentHeight + 'px';
 
 				canvas.width = window.innerWidth / quality;
 				canvas.height = window.innerHeight / quality;
