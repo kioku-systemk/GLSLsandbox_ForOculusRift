@@ -10,7 +10,7 @@ coded by kioku
 0. connect Oculus Rift!
 
 1. start up oculus bridge
-(including App)
+(repository including App)
 
     * mac: oculus-bridge-osx.zip
     * win: oculus-bridge-win.zip
@@ -21,6 +21,9 @@ coded by kioku
 2. open index.html
 (tested on Chrome)
 
+
+3. write GLSL the right pain.
+(the left pain is read only)
 
 ## LICENSE
 MIT License.
