@@ -1,13 +1,12 @@
 # GLSL shader sandbox for Oculus rift
-coded by kioku
 
-#What is this?
+## What is this?
 ![scr](scr.png)
 WebGL based GLSL editor for Oculus Rift.
 
 Presentation at Tokyo Demo Fest 2014 <http://tokyodemofest.jp/2014/>
 
-##  based on GLSL sandbox
+## based on GLSL sandbox
   https://github.com/mrdoob/glsl-sandbox
 
 ## Usage
