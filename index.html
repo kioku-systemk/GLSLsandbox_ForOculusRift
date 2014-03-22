@@ -135,6 +135,7 @@ vec2 HmdWarp(vec2 uv)
 	return LensCenter + Scale * rvector;
 }
 uniform vec2 resolution;
+uniform vec3 oculus;
 void main()
 {
 	vec2 uv = 2.0 * gl_FragCoord.xy/resolution - vec2(1.0);
@@ -192,6 +193,7 @@ void main()
 		</script>
 
 		<script>
+			var oculusQuat_x=0,oculusQuat_y=0,oculusQuat_z=0;
 			var cod2;
 			///initialize_helper();
 
@@ -574,6 +576,9 @@ void main()
 					//console.log(quat.x, quat.y, quat.z, quat.w);
 					var width = 0;
 					var height = 300;
+					oculusQuat_x = quat.x;
+					oculusQuat_y = quat.y;
+					oculusQuat_z = quat.z;
 					code.getWrapperElement().style.top = (height / 2 + quat.x*1000)+'px';
                     code.getWrapperElement().style.left= (width  / 2 + quat.y*1000)+'px';
                     cod2.getWrapperElement().style.top = (height / 2 + quat.x*1000)+'px';
@@ -764,7 +769,8 @@ void main()
 				cacheUniformLocation( program, 'resolution' );
 				cacheUniformLocation( program, 'backbuffer' );
 				cacheUniformLocation( program, 'surfaceSize' );
-
+				cacheUniformLocation( program, 'oculus' );
+				
 				// Load program into GPU
 
 				gl.useProgram( currentProgram );
@@ -1027,6 +1033,7 @@ void main()
 				gl.uniform2f( currentProgram.uniformsCache[ 'resolution' ], parameters.screenWidth, parameters.screenHeight );
 				gl.uniform1i( currentProgram.uniformsCache[ 'backbuffer' ], 0 );
 				gl.uniform2f( currentProgram.uniformsCache[ 'surfaceSize' ], surface.width, surface.height );
+				gl.uniform3f( currentProgram.uniformsCache[ 'oculus' ], oculusQuat_x, oculusQuat_y, oculusQuat_z );
 
 				gl.bindBuffer( gl.ARRAY_BUFFER, surface.buffer );
 				gl.vertexAttribPointer( surface.positionAttribute, 2, gl.FLOAT, false, 0, 0 );
