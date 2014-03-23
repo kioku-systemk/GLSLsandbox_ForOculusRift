@@ -4,6 +4,8 @@
 ![scr](scr.png)
 WebGL based GLSL editor for Oculus Rift.
 
+Let's Rift Coding!!!!
+
 Presentation at Tokyo Demo Fest 2014 <http://tokyodemofest.jp/2014/>
 
 ## based on GLSL sandbox
@@ -27,6 +29,10 @@ Presentation at Tokyo Demo Fest 2014 <http://tokyodemofest.jp/2014/>
 
 3. write GLSL the right pain.
 (the left pain is read only)
+
+## Oculus Rift Rotation
+
+    uniform vec3 oculus;
 
 ## LICENSE
 MIT License.
